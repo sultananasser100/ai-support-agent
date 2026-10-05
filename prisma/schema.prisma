@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Customer {
+  id      String   @id @default(cuid())
+  name    String
+  email   String   @unique
+  plan    String
+  tickets Ticket[]
+}
+
+model KnowledgeArticle {
+  id      String @id @default(cuid())
+  title   String
+  content String
+}
+
+model Ticket {
+  id                String    @id @default(cuid())
+  customerId        String?
+  customer          Customer? @relation(fields: [customerId], references: [id])
+  email             String
+  message           String
+  category          String // billing | technical | account | other
+  priority          String // low | medium | high
+  summary           String
+  suggestedResponse String
+  toolCalls         Json // [{ name, args, result }] shown in the UI
+  createdAt         DateTime  @default(now())
+}
