@@ -2,7 +2,16 @@
 
 A small demo of a **Gemini agent that uses function calling**. A customer submits a support request; the agent decides which tools to call, the tools run against a real PostgreSQL database, and the result is a stored support ticket plus a visible trace of every tool call the agent made.
 
+**Live demo:** https://ai-support-agent-one-tau.vercel.app/
+
 **Stack:** Next.js 16 (App Router) · React · TypeScript · Tailwind CSS · PostgreSQL · Prisma 7 · Gemini API (`@google/genai`) · Zod
+
+## Screenshots
+
+| Request | Ticket | Tool calls |
+| --- | --- | --- |
+| ![Billing request](docs/screenshots/billing-1-request.png) | ![Billing ticket](docs/screenshots/billing-2-ticket.png) | ![Billing tool calls](docs/screenshots/billing-3-tool-calls.png) |
+| | ![Unknown-customer ticket](docs/screenshots/unknown-2-ticket.png) | ![Unknown-customer tool calls](docs/screenshots/unknown-3-tool-calls.png) |
 
 ## How it works
 
@@ -63,7 +72,7 @@ On Windows PowerShell, use `Copy-Item .env.example .env` instead of `cp`.
 | --- | --- |
 | `DATABASE_URL` | Postgres connection string (the default matches `docker-compose.yml`) |
 | `GEMINI_API_KEY` | Your Gemini API key |
-| `GEMINI_MODEL` | Model name, default `gemini-3.8-flash` |
+| `GEMINI_MODEL` | Model name, default `gemini-3.5-flash` |
 
 ## Try it
 

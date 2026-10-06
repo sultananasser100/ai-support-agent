@@ -39,7 +39,7 @@ function defaultGenerateContent(): GenerateContent {
 export async function runAgent(input: unknown, generateContent?: GenerateContent) {
   const request = requestInputSchema.parse(input);
   const generate = generateContent ?? defaultGenerateContent();
-  const model = process.env.GEMINI_MODEL ?? "gemini-3.8-flash";
+  const model = process.env.GEMINI_MODEL ?? "gemini-3.5-flash";
   const tools = createTools(request);
   const toolCalls: ToolCallRecord[] = [];
 
